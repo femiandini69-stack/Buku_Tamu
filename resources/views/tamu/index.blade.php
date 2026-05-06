@@ -6,6 +6,26 @@
     * {
         font-family: "Times New Roman", Times, serif;
     }
+
+    .btn-edit {
+        background-color: #3A071F;
+        color: white;
+        border: none;
+    }
+
+    .btn-edit:hover {
+        background-color: #893A49;
+    }
+
+    .btn-delete {
+        background-color: #6F1F3B;
+        color: white;
+        border: none;
+    }
+
+    .btn-delete:hover {
+        background-color: #7E2A53;
+    }
 </style>
 
 <h2 class="mb-3 text-white">
@@ -30,7 +50,7 @@
         <th>Nama Pengunjung</th>
         <th>Instansi Asal</th>
         <th>Tanggal Kunjungan</th>
-        <th>Keperluan</th>
+        <th>Keperluan Kunjungan</th>
         <th>Nomor Kontak</th>
         <th>Aksi</th>
     </tr>
@@ -43,20 +63,21 @@
         <td>{{ $t->keperluan_kunjungan }}</td>
         <td>{{ $t->nomor_kontak }}</td>
         <td>
-            <a href="{{ route('tamu.edit', $t->id) }}"
-               class="btn btn-warning btn-sm">
+            <!-- EDIT -->
+            <a href="{{ route('tamu.edit', $t->id) }}" 
+               class="btn btn-edit btn-sm">
                Edit
             </a>
 
-            <form action="{{ route('tamu.destroy', $t->id) }}"
-                  method="POST"
-                  style="display:inline">
-
+            <!-- HAPUS -->
+            <form action="{{ route('tamu.destroy', $t->id) }}" 
+                  method="POST" 
+                  style="display:inline;">
                 @csrf
                 @method('DELETE')
 
                 <button onclick="return confirm('Yakin hapus data ini?')"
-                        class="btn btn-danger btn-sm">
+                        class="btn btn-delete btn-sm">
                     Hapus
                 </button>
             </form>

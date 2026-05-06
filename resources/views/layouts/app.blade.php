@@ -10,51 +10,88 @@
             font-family: "Times New Roman", Times, serif;
         }
 
-        
+        /* BACKGROUND */
         body {
-            background-color: #22676E;
+            background: 
+                linear-gradient(rgba(34, 103, 110, 0.8), rgba(34, 103, 110, 0.9)),
+                url("{{ asset('images/bg_buku_tamu.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: white;
         }
 
-       
+        /* NAVBAR */
         .navbar {
-            background-color: #1b555a;
+            background: rgba(27, 85, 90, 0.8);
+            backdrop-filter: blur(8px);
         }
 
         .navbar-brand {
             font-weight: bold;
             color: white !important;
+            text-align: center;
+            width: 100%;
         }
 
-        
-        .card {
-            border-radius: 15px;
-        }
-
-        
+        /* CONTAINER */
         .container {
             color: white;
         }
 
-        
+        /* GLASS CARD */
+        .card {
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* TABLE */
+        table {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        table tbody tr:hover {
+            background-color: rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        /* INPUT */
         .form-control {
-            background-color: #ffffff !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
             color: black !important;
             border: 1px solid #1b555a !important;
         }
 
         .form-control:focus {
-            background-color: #ffffff !important;
+            background-color: white !important;
             color: black !important;
             border-color: #1b555a !important;
             box-shadow: none !important;
         }
 
         .form-control::placeholder {
-            color: #e6e6e6 !important;
+            color: #999 !important;
         }
 
-        
+        /* BUTTON */
+        .btn-primary {
+            background-color: #1b555a;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #144347;
+        }
+
+        /* TITLE */
         h2, h3 {
             color: white;
         }
@@ -64,10 +101,11 @@
 <body>
 
 <nav class="navbar px-3 justify-content-center">
-    <span class="navbar-brand text-center w-100">
+    <span class="navbar-brand">
         Sistem Informasi Pencatatan Buku Tamu Kunjungan Industri
     </span>
 </nav>
+
 <div class="container mt-4">
     @yield('content')
 </div>

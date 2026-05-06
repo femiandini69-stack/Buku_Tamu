@@ -9,7 +9,7 @@ class TamuController extends Controller
 {
     public function index()
     {
-        $tamus = Tamu::all();
+        $tamus = Tamu::latest()->get();
         return view('tamu.index', compact('tamus'));
     }
 
@@ -25,16 +25,12 @@ class TamuController extends Controller
             'instansi_asal' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
-            'nomor_kontak' => 'required|string|max:15',
+            'nomor_kontak' => 'required|numeric',
+        ], [
+            'nomor_kontak.numeric' => 'Nomor kontak harus berupa angka.',
         ]);
 
-        Tamu::create([
-            'nama_pengunjung' => $request->nama_pengunjung,
-            'instansi_asal' => $request->instansi_asal,
-            'tanggal_kunjungan' => $request->tanggal_kunjungan,
-            'keperluan_kunjungan' => $request->keperluan_kunjungan,
-            'nomor_kontak' => $request->nomor_kontak,
-        ]);
+        Tamu::create($request->all());
 
         return redirect()->route('tamu.index')
             ->with('success', 'Data berhasil ditambahkan');
@@ -53,18 +49,13 @@ class TamuController extends Controller
             'instansi_asal' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
-            'nomor_kontak' => 'required|string|max:15',
+            'nomor_kontak' => 'required|numeric',
+        ], [
+            'nomor_kontak.numeric' => 'Nomor kontak harus berupa angka.',
         ]);
 
         $tamu = Tamu::findOrFail($id);
-
-        $tamu->update([
-            'nama_pengunjung' => $request->nama_pengunjung,
-            'instansi_asal' => $request->instansi_asal,
-            'tanggal_kunjungan' => $request->tanggal_kunjungan,
-            'keperluan_kunjungan' => $request->keperluan_kunjungan,
-            'nomor_kontak' => $request->nomor_kontak,
-        ]);
+        $tamu->update($request->all());
 
         return redirect()->route('tamu.index')
             ->with('success', 'Data berhasil diupdate');

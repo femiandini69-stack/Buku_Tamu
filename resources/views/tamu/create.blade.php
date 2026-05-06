@@ -2,13 +2,19 @@
 
 @section('content')
 
-<h3>Tambah Data Tamu</h3>
+<style>
+    * {
+        font-family: "Times New Roman", Times, serif;
+    }
+</style>
+
+<h3 style="color:white;">Tambah Data Tamu</h3>
 
 <form action="{{ route('tamu.store') }}" method="POST">
 @csrf
 
 <div class="mb-3">
-    <label>Nama Pengunjung</label>
+    <label style="color:white;">Nama Pengunjung</label>
     <input type="text" name="nama_pengunjung"
         class="form-control @error('nama_pengunjung') is-invalid @enderror"
         value="{{ old('nama_pengunjung') }}">
@@ -19,7 +25,7 @@
 </div>
 
 <div class="mb-3">
-    <label>Instansi Asal</label>
+    <label style="color:white;">Instansi Asal</label>
     <input type="text" name="instansi_asal"
         class="form-control @error('instansi_asal') is-invalid @enderror"
         value="{{ old('instansi_asal') }}">
@@ -30,7 +36,7 @@
 </div>
 
 <div class="mb-3">
-    <label>Tanggal Kunjungan</label>
+    <label style="color:white;">Tanggal Kunjungan</label>
     <input type="date" name="tanggal_kunjungan"
         class="form-control @error('tanggal_kunjungan') is-invalid @enderror"
         value="{{ old('tanggal_kunjungan') }}">
@@ -41,7 +47,7 @@
 </div>
 
 <div class="mb-3">
-    <label>Keperluan</label>
+    <label style="color:white;">Keperluan</label>
     <input type="text" name="keperluan_kunjungan"
         class="form-control @error('keperluan_kunjungan') is-invalid @enderror"
         value="{{ old('keperluan_kunjungan') }}">
@@ -52,7 +58,7 @@
 </div>
 
 <div class="mb-3">
-    <label>Nomor Kontak</label>
+    <label style="color:white;">Nomor Kontak</label>
     <input type="text" name="nomor_kontak"
         class="form-control @error('nomor_kontak') is-invalid @enderror"
         value="{{ old('nomor_kontak') }}">
@@ -62,7 +68,9 @@
     @enderror
 </div>
 
-<button class="btn btn-primary">Simpan</button>
+<button class="btn" style="background:#004E52; color:white;">
+    Simpan
+</button>
 
 </form>
 

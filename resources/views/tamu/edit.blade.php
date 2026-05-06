@@ -1,24 +1,71 @@
-<h1>Edit Data Tamu</h1>
+@extends('layouts.app')
 
-<form action="{{ route('tamu.update', $tamu->id) }}" method="POST">
-    @csrf
-    @method('PUT')
+@section('content')
 
-    <p>Nama Pengunjung</p>
-    <input type="text" name="nama_pengunjung" value="{{ $tamu->nama_pengunjung }}">
+<h2>Edit Data Tamu</h2>
 
-    <p>Instansi Asal</p>
-    <input type="text" name="instansi_asal" value="{{ $tamu->instansi_asal }}">
+<form method="POST" action="{{ route('tamu.update', $tamu->id) }}">
+@csrf
+@method('PUT')
 
-    <p>Tanggal Kunjungan</p>
-    <input type="date" name="tanggal_kunjungan" value="{{ $tamu->tanggal_kunjungan }}">
+<div class="mb-2">
+    <label>Nama Pengunjung</label>
+    <input class="form-control @error('nama_pengunjung') is-invalid @enderror"
+           name="nama_pengunjung"
+           value="{{ old('nama_pengunjung', $tamu->nama_pengunjung) }}">
 
-    <p>Keperluan</p>
-    <input type="text" name="keperluan_kunjungan" value="{{ $tamu->keperluan_kunjungan }}">
+    @error('nama_pengunjung')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 
-    <p>Nomor Kontak</p>
-    <input type="text" name="nomor_kontak" value="{{ $tamu->nomor_kontak }}">
+<div class="mb-2">
+    <label>Instansi Asal</label>
+    <input class="form-control @error('instansi_asal') is-invalid @enderror"
+           name="instansi_asal"
+           value="{{ old('instansi_asal', $tamu->instansi_asal) }}">
 
-    <br><br>
-    <button type="submit">Update</button>
+    @error('instansi_asal')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-2">
+    <label>Tanggal Kunjungan</label>
+    <input type="date"
+           class="form-control @error('tanggal_kunjungan') is-invalid @enderror"
+           name="tanggal_kunjungan"
+           value="{{ old('tanggal_kunjungan', $tamu->tanggal_kunjungan) }}">
+
+    @error('tanggal_kunjungan')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-2">
+    <label>Keperluan Kunjungan</label>
+    <input class="form-control @error('keperluan_kunjungan') is-invalid @enderror"
+           name="keperluan_kunjungan"
+           value="{{ old('keperluan_kunjungan', $tamu->keperluan_kunjungan) }}">
+
+    @error('keperluan_kunjungan')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<div class="mb-2">
+    <label>Nomor Kontak</label>
+    <input class="form-control @error('nomor_kontak') is-invalid @enderror"
+           name="nomor_kontak"
+           value="{{ old('nomor_kontak', $tamu->nomor_kontak) }}">
+
+    @error('nomor_kontak')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
+<button class="btn btn-primary">Update</button>
+
 </form>
+
+@endsection

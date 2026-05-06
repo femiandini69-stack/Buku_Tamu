@@ -16,6 +16,6 @@ class Tamu extends Model
         'instansi_asal',
         'tanggal_kunjungan',
         'keperluan_kunjungan',
-        'nomor_kontak'
+        'nomor_kontak',
     ];
 }

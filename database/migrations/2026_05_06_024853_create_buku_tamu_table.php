@@ -6,25 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-   {
-    Schema::create('tamus', function (Blueprint $table) {
-        $table->id();
-        $table->string('nama');
-        $table->string('email');
-        $table->text('pesan');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('tamus', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_pengunjung');
+            $table->string('instansi_asal');
+            $table->date('tanggal_kunjungan');
+            $table->string('keperluan_kunjungan');
+            $table->string('nomor_kontak');
+            $table->timestamps();
+        });
+    }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('buku_tamu');
+        Schema::dropIfExists('tamus');
     }
 };

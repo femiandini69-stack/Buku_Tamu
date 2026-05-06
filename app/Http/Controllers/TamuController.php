@@ -9,8 +9,8 @@ class TamuController extends Controller
 {
     public function index()
     {
-        $tamu = Tamu::all();
-        return view('tamu.index', compact('tamu'));
+        $tamus = Tamu::all();
+        return view('tamu.index', compact('tamus'));
     }
 
     public function create()
@@ -25,10 +25,16 @@ class TamuController extends Controller
             'instansi_asal' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
-            'nomor_kontak' => 'required|numeric'
+            'nomor_kontak' => 'required|string|max:15',
         ]);
 
-        Tamu::create($request->all());
+        Tamu::create([
+            'nama_pengunjung' => $request->nama_pengunjung,
+            'instansi_asal' => $request->instansi_asal,
+            'tanggal_kunjungan' => $request->tanggal_kunjungan,
+            'keperluan_kunjungan' => $request->keperluan_kunjungan,
+            'nomor_kontak' => $request->nomor_kontak,
+        ]);
 
         return redirect()->route('tamu.index')
             ->with('success', 'Data berhasil ditambahkan');
@@ -47,11 +53,18 @@ class TamuController extends Controller
             'instansi_asal' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
-            'nomor_kontak' => 'required|numeric'
+            'nomor_kontak' => 'required|string|max:15',
         ]);
 
         $tamu = Tamu::findOrFail($id);
-        $tamu->update($request->all());
+
+        $tamu->update([
+            'nama_pengunjung' => $request->nama_pengunjung,
+            'instansi_asal' => $request->instansi_asal,
+            'tanggal_kunjungan' => $request->tanggal_kunjungan,
+            'keperluan_kunjungan' => $request->keperluan_kunjungan,
+            'nomor_kontak' => $request->nomor_kontak,
+        ]);
 
         return redirect()->route('tamu.index')
             ->with('success', 'Data berhasil diupdate');
@@ -59,7 +72,7 @@ class TamuController extends Controller
 
     public function destroy($id)
     {
-        Tamu::destroy($id);
+        Tamu::findOrFail($id)->delete();
 
         return redirect()->route('tamu.index')
             ->with('success', 'Data berhasil dihapus');

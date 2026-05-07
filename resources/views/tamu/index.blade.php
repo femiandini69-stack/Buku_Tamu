@@ -28,7 +28,7 @@
     }
 </style>
 
-<h2 class="mb-3 text-white">
+<h2 class="mb-4 mt-3 text-white">
     Data Buku Tamu
 </h2>
 
@@ -43,34 +43,35 @@
     + Tambah Data
 </a>
 
-<div class="card p-3 bg-white">
+<div class="card p-4 bg-white mt-4">
 
 <table class="table table-bordered text-dark">
     <tr>
         <th>Nama Pengunjung</th>
         <th>Instansi Asal</th>
+        <th>Jabatan</th>
         <th>Tanggal Kunjungan</th>
         <th>Keperluan Kunjungan</th>
         <th>Nomor Kontak</th>
         <th>Aksi</th>
     </tr>
 
-    @foreach($tamus as $t)
+    @foreach($tamus as $tamu)
     <tr>
-        <td>{{ $t->nama_pengunjung }}</td>
-        <td>{{ $t->instansi_asal }}</td>
-        <td>{{ $t->tanggal_kunjungan }}</td>
-        <td>{{ $t->keperluan_kunjungan }}</td>
-        <td>{{ $t->nomor_kontak }}</td>
+        <td>{{ $tamu->nama_pengunjung }}</td>
+        <td>{{ $tamu->instansi_asal }}</td>
+        <td>{{ $tamu->jabatan }}</td>
+        <td>{{ $tamu->tanggal_kunjungan }}</td>
+        <td>{{ $tamu->keperluan_kunjungan }}</td>
+        <td>{{ $tamu->nomor_kontak }}</td>
+
         <td>
-            <!-- EDIT -->
-            <a href="{{ route('tamu.edit', $t->id) }}" 
+            <a href="{{ route('tamu.edit', $tamu->id) }}" 
                class="btn btn-edit btn-sm">
                Edit
             </a>
 
-            <!-- HAPUS -->
-            <form action="{{ route('tamu.destroy', $t->id) }}" 
+            <form action="{{ route('tamu.destroy', $tamu->id) }}" 
                   method="POST" 
                   style="display:inline;">
                 @csrf
@@ -84,7 +85,6 @@
         </td>
     </tr>
     @endforeach
-
 </table>
 
 </div>

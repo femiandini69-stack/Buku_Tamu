@@ -20,6 +20,9 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             color: white;
+
+            
+            padding-top: 80px;
         }
 
         /* NAVBAR */
@@ -31,8 +34,6 @@
         .navbar-brand {
             font-weight: bold;
             color: white !important;
-            text-align: center;
-            width: 100%;
         }
 
         /* CONTAINER */
@@ -91,7 +92,6 @@
             background-color: #144347;
         }
 
-        /* TITLE */
         h2, h3 {
             color: white;
         }
@@ -100,13 +100,15 @@
 
 <body>
 
-<nav class="navbar px-3 justify-content-center">
-    <span class="navbar-brand">
+<!-- NAVBAR FIX -->
+<nav class="navbar px-3 justify-content-center fixed-top">
+    <span class="navbar-brand text-center">
         Sistem Informasi Pencatatan Buku Tamu Kunjungan Industri
     </span>
 </nav>
 
-<div class="container mt-4">
+<!-- CONTENT -->
+<div class="container">
     @yield('content')
 </div>
 

@@ -23,6 +23,7 @@ class TamuController extends Controller
         $request->validate([
             'nama_pengunjung' => 'required',
             'instansi_asal' => 'required',
+            'jabatan' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
             'nomor_kontak' => 'required|numeric',
@@ -47,6 +48,7 @@ class TamuController extends Controller
         $request->validate([
             'nama_pengunjung' => 'required',
             'instansi_asal' => 'required',
+            'jabatan' => 'required',
             'tanggal_kunjungan' => 'required|date',
             'keperluan_kunjungan' => 'required',
             'nomor_kontak' => 'required|numeric',

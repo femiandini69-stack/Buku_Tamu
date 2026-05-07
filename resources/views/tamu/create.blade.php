@@ -35,6 +35,18 @@
     @enderror
 </div>
 
+<!-- 🔥 TAMBAHAN JABATAN -->
+<div class="mb-3">
+    <label style="color:white;">Jabatan</label>
+    <input type="text" name="jabatan"
+        class="form-control @error('jabatan') is-invalid @enderror"
+        value="{{ old('jabatan') }}">
+
+    @error('jabatan')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+
 <div class="mb-3">
     <label style="color:white;">Tanggal Kunjungan</label>
     <input type="date" name="tanggal_kunjungan"

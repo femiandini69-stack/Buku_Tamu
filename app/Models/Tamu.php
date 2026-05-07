@@ -14,6 +14,7 @@ class Tamu extends Model
     protected $fillable = [
         'nama_pengunjung',
         'instansi_asal',
+        'jabatan',
         'tanggal_kunjungan',
         'keperluan_kunjungan',
         'nomor_kontak',

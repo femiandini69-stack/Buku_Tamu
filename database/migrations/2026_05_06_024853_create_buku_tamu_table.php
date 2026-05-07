@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pengunjung');
             $table->string('instansi_asal');
+            $table->string('jabatan');
             $table->date('tanggal_kunjungan');
             $table->string('keperluan_kunjungan');
             $table->string('nomor_kontak');
